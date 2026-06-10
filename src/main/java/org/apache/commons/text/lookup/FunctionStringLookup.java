@@ -71,8 +71,7 @@ final class FunctionStringLookup<V> extends AbstractStringLookup {
     /**
      * Looks up a String key by applying the function.
      * <p>
-     * If the function is null, then null is returned. The function result object is converted to a string using
-     * toString().
+     * If the function is null, then null is returned. The function result object is converted to a string using {@link Objects#toString(Object, String)}.
      * </p>
      *
      * @param key the key to be looked up, may be null.
@@ -87,8 +86,8 @@ final class FunctionStringLookup<V> extends AbstractStringLookup {
         try {
             obj = function.apply(key);
         } catch (final SecurityException | NullPointerException | IllegalArgumentException e) {
-            // Squelched. All lookup(String) will return null.
-            // Could be a ConcurrentHashMap and a null key request
+            // lookup(String) returns null.
+            // NullPointerException: Could be a ConcurrentHashMap and a null key request.
             return null;
         }
         return Objects.toString(obj, null);

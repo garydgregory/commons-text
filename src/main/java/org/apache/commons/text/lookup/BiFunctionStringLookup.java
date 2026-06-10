@@ -77,8 +77,7 @@ final class BiFunctionStringLookup<P, R> implements BiStringLookup<P> {
     /**
      * Looks up a String key by applying the function.
      * <p>
-     * If the function is null, then null is returned. The function result object is converted to a string using
-     * toString().
+     * If the function is null, then null is returned. The function result object is converted to a string using {@link Objects#toString(Object, String)}.
      * </p>
      *
      * @param key the key to be looked up, may be null.
